@@ -68,7 +68,7 @@ public class TicTacToeGame {
   public int tracker;
 
 
-  public LinkedList<Transformation> transform = new LinkedList<Transformation>();
+  public LinkedList<Transformation> transform;
 
 
 
@@ -434,7 +434,7 @@ public class TicTacToeGame {
 
     tracker = 0;
 
-		transform.clear();
+		transform = new LinkedList<Transformation>();
 
     transformedBoard = new int[lines * columns];
 		for(int i = 0; i < transformedBoard.length; i++){
