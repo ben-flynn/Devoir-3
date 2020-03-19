@@ -541,7 +541,7 @@ public class TicTacToeGame {
 				}
 			
 		}
-		this.reset();
+		
   		return false;
 
     }
