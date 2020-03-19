@@ -68,7 +68,7 @@ public class TicTacToeGame {
   public int tracker;
 
 
-  public LinkedList<TicTacToeGame> transform = new LinkedList<TicTacToeGame>();
+  public LinkedList<Transformation> transform = new LinkedList<Transformation>();
 
 
 
