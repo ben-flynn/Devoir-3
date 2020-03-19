@@ -18,14 +18,14 @@ public class Test {
 
         TicTacToeGame g;
 				
-        /*
+        
         System.out.println("Test on a 3x3 game");
         g = new TicTacToeGame();
         g.play(0);
         g.play(2);
         g.play(3);
         printTest(g);
-				*/
+				
 
         System.out.println("Test on a 5x4 game");
         g = new TicTacToeGame(4,5);

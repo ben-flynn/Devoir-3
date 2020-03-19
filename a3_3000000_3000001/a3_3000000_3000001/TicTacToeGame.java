@@ -433,9 +433,6 @@ public class TicTacToeGame {
     public void reset(){
 
     tracker = 0;
-
-		transform = new LinkedList<Transformation>();
-
     transformedBoard = new int[lines * columns];
 		for(int i = 0; i < transformedBoard.length; i++){
 		transformedBoard[i] = i;
@@ -452,11 +449,11 @@ public class TicTacToeGame {
      */
     public boolean hasNext(){
 
-		if (tracker == 7){
-		return false;
-	  }
-
-		if((tracker == 3) && (lines != columns)){
+		if (tracker == 8){
+			return false;
+		 }
+		 
+		if((tracker == 4) && (lines != columns)){
 		return false;
 	  }
 
@@ -474,24 +471,34 @@ public class TicTacToeGame {
 
 		if (this.hasNext() == true){
 			if (lines != columns){
-		    if (tracker == 0) {
-				Utils.horizontalFlip(lines, columns, transformedBoard);
-				}
-				if (tracker == 1){
-				Utils.horizontalFlip(lines, columns, transformedBoard);
-		    Utils.verticalFlip(lines, columns, transformedBoard);
-			  }
-				if (tracker == 2){
-        Utils.verticalFlip(lines, columns, transformedBoard);
-				Utils.horizontalFlip(lines, columns, transformedBoard);
-				Utils.verticalFlip(lines, columns, transformedBoard);
-			  }
+					switch(tracker){
+						case 1: case 3:
+						Utils.horizontalFlip(lines, columns, transformedBoard);
+
+						break;
+						case 2:
+						Utils.verticalFlip(lines, columns, transformedBoard);
+
+						break;
+						
+					}
 				tracker++;
 				}
 
 			if (lines == columns){
+				if(tracker<4 && tracker>0){
+					Utils.rotate(lines, columns, transformedBoard);
+				}
+				if(tracker==4){
+					Utils.horizontalFlip(lines, columns, transformedBoard);
+				}
+				if(tracker>4){
+					Utils.rotate(lines, columns, transformedBoard);
+
+				}
 
 
+				tracker++;
 
 
 			}
@@ -512,8 +519,30 @@ public class TicTacToeGame {
     *  the TicTacToeGame instance to be compared with this one
   	*/
   	public boolean equalsWithSymmetry(TicTacToeGame other){
-
-  		return true;
+		 
+		
+		  boolean same=true;
+			int i;
+		  this.reset();
+		while(this.hasNext()){
+			same=true;
+	
+			this.next();
+			i=0;
+			for(CellValue v:this.board){
+				if(v!=other.board[transformedBoard[i++]]){		
+					same=false;
+					break;
+				}
+			}
+		
+			if(same==true){
+				return true;
+				}
+			
+		}
+		this.reset();
+  		return false;
 
     }
 

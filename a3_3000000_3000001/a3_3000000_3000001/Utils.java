@@ -44,18 +44,18 @@ public class Utils {
 
     int [] tempBoard = new int[(lines*columns)];
 	  int counter = 0;
-
+      int a=0;
     for(int i = 0; i < columns; i++){
      for(int j = 0; j < lines; j++){
 			 tempBoard[j + counter] = transformedBoard[((columns * (lines - 1)) + i) - (j * (columns))];
 
-		}
+		   }
 		counter = counter + lines;
 		}
 
-    for (int i = 0; i < tempBoard.length; i++){
-		  transformedBoard[i] = tempBoard[i];
-		}
+    for (int v : tempBoard){
+      transformedBoard[a++] =v ;
+    }
     }
 
     /**
@@ -95,7 +95,7 @@ public class Utils {
 
 			int [] tempBoard = new int[(lines*columns)];
 		  int counter = 0;
-
+      int a=0;
 			for(int i = 0; i < lines; i++){
 			 for(int j = 0; j < columns; j++){
 
@@ -105,8 +105,8 @@ public class Utils {
 	}
 
 
-	for (int i = 0; i < tempBoard.length; i++){
-		transformedBoard[i] = tempBoard[i];
+	for (int v : tempBoard){
+		transformedBoard[a++] =v ;
 	}
 	}
    /**
@@ -145,14 +145,14 @@ public class Utils {
 
 			int [] tempBoard = new int[(lines*columns)];
 			int counter = 0;
-
+      int a=0;
 			for(int i = 0; i < lines; i++){
 			 for(int j = columns - 1; j >= 0; j--){
        tempBoard[counter++] = transformedBoard[j + (i*columns)];
     }
 }
-for (int i = 0; i < tempBoard.length; i++){
-	transformedBoard[i] = tempBoard[i];
+for (int v : tempBoard){
+  transformedBoard[a++] =v ;
 }
 }
     private static void test(int lines, int columns){
